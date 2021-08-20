@@ -36,4 +36,7 @@ public class PropostaRequest {
        return new Proposta(documento,email,nome,endereco,salario);
     }
 
+    public Object getDocumento() {
+        return documento;
+    }
 }
