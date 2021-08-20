@@ -1,12 +1,15 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
 import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
+
+import static com.fasterxml.jackson.annotation.JsonCreator.Mode.PROPERTIES;
 
 public class PropostaRequest {
 
@@ -24,6 +27,7 @@ public class PropostaRequest {
     @Positive
     private BigDecimal salario;
 
+    @JsonCreator(mode = PROPERTIES)
     public PropostaRequest(String documento, String email, String nome, String endereco, BigDecimal salario) {
         this.documento = documento;
         this.email = email;
@@ -39,4 +43,21 @@ public class PropostaRequest {
     public Object getDocumento() {
         return documento;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
 }

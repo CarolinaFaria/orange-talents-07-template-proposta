@@ -1,11 +1,9 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
+import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
 import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -31,6 +29,12 @@ public class Proposta {
     @NotNull
     @Positive
     private BigDecimal salario;
+    @Enumerated
+    private EstadoProposta estadoProposta;
+
+    @Deprecated
+    public Proposta() {
+    }
 
     public Proposta(String documento, String email, String nome, String endereco, BigDecimal salario) {
         this.documento = documento;
@@ -42,5 +46,33 @@ public class Proposta {
 
     public Long getId() {
         return id;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public EstadoProposta getEstadoProposta() {
+        return estadoProposta;
+    }
+
+    public void setEstadoProposta(EstadoProposta estadoProposta) {
+        this.estadoProposta = estadoProposta;
     }
 }
