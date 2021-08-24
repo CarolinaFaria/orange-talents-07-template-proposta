@@ -54,10 +54,11 @@ public class PropostaController {
         StatusDevolvido statusDevolvido;
         try{
             AnalisePropostaResponse response = analiseProposta.analisar(request);
+            statusDevolvido = StatusDevolvido.SEM_RESTRICAO;
         } catch (FeignException e){
             statusDevolvido = StatusDevolvido.COM_RESTRICAO;
-            proposta.setEstadoProposta(statusDevolvido.defineEstado());
         }
+        proposta.setEstadoProposta(statusDevolvido.defineEstado());
     }
 
 }

@@ -19,11 +19,11 @@ public class AnalisePropostaResponse {
     private StatusDevolvido statusDevolvido;
 
 
-    public AnalisePropostaResponse(String nome, String documento, String idProposta, StatusDevolvido statusRecebido) {
+    public AnalisePropostaResponse(String nome, String documento, String idProposta, StatusDevolvido statusDevolvido) {
         this.nome = nome;
         this.documento = documento;
         this.idProposta = idProposta;
-        this.statusDevolvido = statusRecebido;
+        this.statusDevolvido = statusDevolvido;
     }
 
     public String getNome() {

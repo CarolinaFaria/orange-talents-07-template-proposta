@@ -1,5 +1,6 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
+import br.com.zup.edu.desafioproposta.cartao.Cartao;
 import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
 import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
 
@@ -31,6 +32,9 @@ public class Proposta {
     private BigDecimal salario;
     @Enumerated
     private EstadoProposta estadoProposta;
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Cartao cartao;
 
     @Deprecated
     public Proposta() {
@@ -74,5 +78,9 @@ public class Proposta {
 
     public void setEstadoProposta(EstadoProposta estadoProposta) {
         this.estadoProposta = estadoProposta;
+    }
+
+    public void getCartao(Cartao cartao) {
+        this.cartao = cartao;
     }
 }
