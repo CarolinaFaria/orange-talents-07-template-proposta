@@ -8,10 +8,7 @@ import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
@@ -47,6 +44,18 @@ public class PropostaController {
         URI uri = uriBuilder.path("propostas/{id}").buildAndExpand(proposta.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> acompanhaProposta(@PathVariable Long id) {
+        Optional<Proposta> possivelProposta = propostaRepository.findById(id);
+
+        if (possivelProposta.isPresent()) {
+            Proposta proposta = possivelProposta.get();
+            return ResponseEntity.ok(new PropostaResponse(proposta));
+        }
+        return ResponseEntity.notFound().build();
     }
 
     private void resultadoAnalise(Proposta proposta) {
