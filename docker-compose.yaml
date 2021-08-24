@@ -34,18 +34,29 @@ services:
       POSTGRES_DB: keycloak
       POSTGRES_HOST: postgres
 
-  postgres_proposta:
+  postgres-proposta:
     image: 'postgres:9.6-alpine'
     volumes:
       - propostas-volume:/var/lib/postgresql/data
     ports:
       - 22163:5432
     environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: proposta
+
+  proposta-webservice:
+    container_name: api
+    build: ./
+    ports:
+      - 8081:8080
+    environment:
       URL_DATABASE: jdbc:postgresql://postgres-proposta:5432/proposta
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: propostas
-      POSTGRES_HOST: postgres
+    depends_on:
+      - postgres-proposta
+
 
   keycloak:
     image: jboss/keycloak:11.0.0
