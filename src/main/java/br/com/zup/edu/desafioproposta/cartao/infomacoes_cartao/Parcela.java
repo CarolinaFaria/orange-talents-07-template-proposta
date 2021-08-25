@@ -29,4 +29,22 @@ public class Parcela {
         this.quantidade = quantidade;
         this.valor = valor;
     }
+
+    public Parcela(Parcela parcela) {
+        this.apiId = parcela.getApiId();
+        this.quantidade = parcela.getQuantidade();
+        this.valor = parcela.getValor();
+    }
+
+    public String getApiId() {
+        return apiId;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
 }

@@ -30,4 +30,32 @@ public class Bloqueio {
         this.sistemaResponsavel = sistemaResponsavel;
         this.ativo = ativo;
     }
+
+    public Bloqueio(Bloqueio bloqueio) {
+        this.apiId = bloqueio.getApiId();
+        this.bloqueadoAte = bloqueio.getBloqueadoAte();
+        this.sistemaResponsavel = bloqueio.getSistemaResponsavel();
+        this.ativo = bloqueio.isAtivo();
+    }
+
+
+    public String getApiId() {
+        return apiId;
+    }
+
+    public LocalDateTime getBloqueadoAte() {
+        return bloqueadoAte;
+    }
+
+    public String getSistemaResponsavel() {
+        return sistemaResponsavel;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
 }

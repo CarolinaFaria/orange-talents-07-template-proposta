@@ -7,6 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Cartao {
@@ -20,21 +23,21 @@ public class Cartao {
     private String titular;
 
     @OneToMany(mappedBy = "cartao",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Bloqueio> bloqueios = new ArrayList<>();
+    private Set<Bloqueio> bloqueios;
 
     @OneToMany(mappedBy = "cartao", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Aviso> avisos = new ArrayList<>();
+    private Set<Aviso> avisos;
 
     @OneToMany(mappedBy = "cartao", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Carteira> carteiras = new ArrayList<>();
+    private Set<Carteira> carteiras;
 
     @OneToMany(mappedBy = "cartao", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Parcela> parcelas = new ArrayList<>();
+    private Set<Parcela> parcelas;
 
     private Integer limite;
 
-    @OneToMany(mappedBy = "cartao", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Renegociacao> renegociacoes = new ArrayList<>();
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Renegociacao renegociacao;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Vencimento vencimento;
@@ -47,8 +50,8 @@ public class Cartao {
     public Cartao() {
     }
 
-    public Cartao(LocalDateTime emitidoEm, String titular, List<Bloqueio> bloqueios, List<Aviso> avisos,
-                  List<Carteira> carteiras, List<Parcela> parcelas, Integer limite, List<Renegociacao> renegociacoes,
+    public Cartao(LocalDateTime emitidoEm, String titular, Set<Bloqueio> bloqueios, Set<Aviso> avisos,
+                  Set<Carteira> carteiras, Set<Parcela> parcelas, Integer limite, Renegociacao renegociacao,
                   Vencimento vencimento, String idProposta, String numeroCartao) {
         this.emitidoEm = emitidoEm;
         this.titular = titular;
@@ -57,7 +60,7 @@ public class Cartao {
         this.carteiras = carteiras;
         this.parcelas = parcelas;
         this.limite = limite;
-        this.renegociacoes = renegociacoes;
+        this.renegociacao = renegociacao;
         this.vencimento = vencimento;
         this.idProposta = idProposta;
         this.numeroCartao = numeroCartao;
@@ -68,13 +71,27 @@ public class Cartao {
         this.idProposta = cartaoResponse.getIdProposta();
         this.titular = cartaoResponse.getTitular();
         this.emitidoEm = cartaoResponse.getEmitidoEm();
-        this.bloqueios = cartaoResponse.getBloqueios();
-        this.avisos = cartaoResponse.getAvisos();
-        this.carteiras = cartaoResponse.getCarteiras();
-        this.parcelas = cartaoResponse.getParcelas();
+
+        if (!cartaoResponse.getBloqueios().isEmpty()) {
+            this.bloqueios = cartaoResponse.getBloqueios().stream().map(Bloqueio::new).collect(Collectors.toSet());
+        }
+        if (!cartaoResponse.getAvisos().isEmpty()) {
+            this.avisos = cartaoResponse.getAvisos().stream().map(Aviso::new).collect(Collectors.toSet());
+        }
+        if (!cartaoResponse.getCarteiras().isEmpty()) {
+            this.carteiras = cartaoResponse.getCarteiras().stream().map(Carteira::new).collect(Collectors.toSet());
+        }
+        if (!cartaoResponse.getParcelas().isEmpty()) {
+            this.parcelas = cartaoResponse.getParcelas().stream().map(Parcela::new).collect(Collectors.toSet());
+        }
         this.limite = cartaoResponse.getLimite();
-        this.renegociacoes = cartaoResponse.getRenegociacoes();
-        this.vencimento = cartaoResponse.getVencimento();
+
+        if (!Objects.isNull(cartaoResponse.getRenegociacoes())) {
+            this.renegociacao = new Renegociacao(cartaoResponse.getRenegociacoes());
+        }
+        if(!Objects.isNull(cartaoResponse.getVencimento())) {
+            this.vencimento =  new Vencimento(cartaoResponse.getVencimento());
+        }
     }
     public String getNumeroCartao() {
         return this.numeroCartao;
@@ -88,19 +105,19 @@ public class Cartao {
         return titular;
     }
 
-    public List<Bloqueio> getBloqueios() {
+    public Set<Bloqueio> getBloqueios() {
         return bloqueios;
     }
 
-    public List<Aviso> getAvisos() {
+    public Set<Aviso> getAvisos() {
         return avisos;
     }
 
-    public List<Carteira> getCarteiras() {
+    public Set<Carteira> getCarteiras() {
         return carteiras;
     }
 
-    public List<Parcela> getParcelas() {
+    public Set<Parcela> getParcelas() {
         return parcelas;
     }
 
@@ -108,15 +125,11 @@ public class Cartao {
         return limite;
     }
 
-    public List<Renegociacao> getRenegociacoes() {
-        return renegociacoes;
+    public Renegociacao getRenegociacao() {
+        return renegociacao;
     }
 
     public Vencimento getVencimento() {
         return vencimento;
-    }
-
-    public String getIdProposta() {
-        return idProposta;
     }
 }

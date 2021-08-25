@@ -28,5 +28,27 @@ public class PropostaResponse {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public EstadoProposta getEstadoProposta() {
+        return estadoProposta;
+    }
 }

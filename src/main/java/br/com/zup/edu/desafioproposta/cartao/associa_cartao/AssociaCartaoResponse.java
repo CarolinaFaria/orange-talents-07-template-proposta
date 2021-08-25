@@ -21,13 +21,13 @@ public class AssociaCartaoResponse {
     private List<Carteira> carteiras;
     private List<Parcela> parcelas;
     private Integer limite;
-    private List<Renegociacao> renegociacoes;
+    private Renegociacao renegociacoes;
     private Vencimento vencimento;
 
 
     public AssociaCartaoResponse(String id, String idProposta, String titular, LocalDateTime emitidoEm,
                                  List<Bloqueio> bloqueios, List<Aviso> avisos, List<Carteira> carteiras,
-                                 List<Parcela> parcelas, Integer limite, List<Renegociacao> renegociacoes,
+                                 List<Parcela> parcelas, Integer limite, Renegociacao renegociacoes,
                                  Vencimento vencimento) {
         this.id = id;
         this.idProposta = idProposta;
@@ -78,7 +78,7 @@ public class AssociaCartaoResponse {
         return limite;
     }
 
-    public List<Renegociacao> getRenegociacoes() {
+    public Renegociacao getRenegociacoes() {
         return renegociacoes;
     }
 

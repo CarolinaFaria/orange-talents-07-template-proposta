@@ -15,7 +15,7 @@ public class Aviso {
     private LocalDateTime validoAte;
     private String destino;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Cartao cartao;
 
     @Deprecated
@@ -25,5 +25,18 @@ public class Aviso {
     public Aviso(LocalDateTime validoAte, String destino) {
         this.validoAte = validoAte;
         this.destino = destino;
+    }
+
+    public Aviso(Aviso aviso) {
+        this.validoAte = aviso.getValidoAte();
+        this.destino = aviso.getDestino();
+    }
+
+    public LocalDateTime getValidoAte() {
+        return validoAte;
+    }
+
+    public String getDestino() {
+        return destino;
     }
 }

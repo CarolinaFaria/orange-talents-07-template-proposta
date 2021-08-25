@@ -28,4 +28,23 @@ public class Vencimento {
         this.dia = dia;
         this.dataDeCriacao = dataDeCriacao;
     }
+
+    public Vencimento(Vencimento vencimento) {
+        this.apiId = vencimento.getApiId();
+        this.dia = vencimento.getDia();
+        this.dataDeCriacao = vencimento.getDataDeCriacao();
+
+    }
+
+    public String getApiId() {
+        return apiId;
+    }
+
+    public Integer getDia() {
+        return dia;
+    }
+
+    public LocalDateTime getDataDeCriacao() {
+        return dataDeCriacao;
+    }
 }

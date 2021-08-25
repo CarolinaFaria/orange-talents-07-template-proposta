@@ -48,6 +48,15 @@ public class Proposta {
         this.salario = salario;
     }
 
+    public Proposta(Proposta proposta) {
+        this.documento = proposta.getDocumento();
+        this.email = proposta.getEmail();
+        this.nome = proposta.getNome();
+        this.endereco = proposta.getEndereco();
+        this.salario = proposta.getSalario();
+    }
+
+
     public Long getId() {
         return id;
     }

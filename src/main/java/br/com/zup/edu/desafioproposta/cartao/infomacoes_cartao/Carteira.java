@@ -30,4 +30,27 @@ public class Carteira {
         this.associadaEm = associadaEm;
         this.emissor = emissor;
     }
+
+    public Carteira(Carteira carteira) {
+        this.apiId = carteira.getApiId();
+        this.email = carteira.getEmail();
+        this.associadaEm = carteira.getAssociadaEm();
+        this.emissor = carteira.getEmissor();
+    }
+
+    public String getApiId() {
+        return apiId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDateTime getAssociadaEm() {
+        return associadaEm;
+    }
+
+    public String getEmissor() {
+        return emissor;
+    }
 }
