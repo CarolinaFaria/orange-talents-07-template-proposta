@@ -22,9 +22,6 @@ public class CartaoService {
     PropostaRepository propostaRepository;
 
     @Autowired
-    CartaoRepository cartaoRepository;
-
-    @Autowired
     AssociaCartao associaCartao;
 
     @Scheduled(fixedDelayString = "${periodicidade.executa-operacao}")
