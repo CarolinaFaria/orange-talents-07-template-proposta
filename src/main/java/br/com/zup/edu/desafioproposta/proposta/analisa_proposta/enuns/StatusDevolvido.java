@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.proposta.analise.enuns;
+package br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns;
 
 public enum StatusDevolvido {
 

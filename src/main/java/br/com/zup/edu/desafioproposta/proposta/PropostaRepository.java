@@ -1,7 +1,6 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
-import br.com.zup.edu.desafioproposta.cartao.Cartao;
-import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.EstadoProposta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

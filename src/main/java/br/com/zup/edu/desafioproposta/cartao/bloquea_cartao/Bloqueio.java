@@ -1,9 +1,10 @@
-package br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao;
+package br.com.zup.edu.desafioproposta.cartao.bloquea_cartao;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Bloqueio {
@@ -16,6 +17,7 @@ public class Bloqueio {
     private LocalDateTime bloqueadoAte;
     private String sistemaResponsavel;
     private boolean ativo;
+    private String ip;
 
     @ManyToOne
     private Cartao cartao;
@@ -39,6 +41,14 @@ public class Bloqueio {
     }
 
 
+    public Bloqueio(String ip, String sistemaResponsavel, Cartao cartao) {
+        this.ip = ip;
+        this.sistemaResponsavel = sistemaResponsavel;
+        this.cartao = cartao;
+        this.bloqueadoAte = LocalDateTime.now();
+    }
+
+
     public String getApiId() {
         return apiId;
     }
@@ -57,5 +67,18 @@ public class Bloqueio {
 
     public Cartao getCartao() {
         return cartao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bloqueio bloqueio = (Bloqueio) o;
+        return id.equals(bloqueio.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

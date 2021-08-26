@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.proposta.analise;
+package br.com.zup.edu.desafioproposta.proposta.analisa_proposta;
 
 import br.com.zup.edu.desafioproposta.proposta.Proposta;
 import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;

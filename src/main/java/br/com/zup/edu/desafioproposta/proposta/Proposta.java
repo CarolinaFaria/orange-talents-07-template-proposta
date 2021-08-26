@@ -1,7 +1,7 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
-import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.EstadoProposta;
 import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
 
 import javax.persistence.*;

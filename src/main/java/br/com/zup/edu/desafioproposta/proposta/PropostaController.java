@@ -1,9 +1,9 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
-import br.com.zup.edu.desafioproposta.proposta.analise.AnaliseProposta;
-import br.com.zup.edu.desafioproposta.proposta.analise.AnalisePropostaRequest;
-import br.com.zup.edu.desafioproposta.proposta.analise.AnalisePropostaResponse;
-import br.com.zup.edu.desafioproposta.proposta.analise.enuns.StatusDevolvido;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnaliseProposta;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaRequest;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaResponse;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.StatusDevolvido;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

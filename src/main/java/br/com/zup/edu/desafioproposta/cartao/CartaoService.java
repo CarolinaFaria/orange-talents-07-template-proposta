@@ -4,7 +4,7 @@ import br.com.zup.edu.desafioproposta.cartao.associa_cartao.AssociaCartao;
 import br.com.zup.edu.desafioproposta.cartao.associa_cartao.AssociaCartaoResponse;
 import br.com.zup.edu.desafioproposta.proposta.Proposta;
 import br.com.zup.edu.desafioproposta.proposta.PropostaRepository;
-import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.EstadoProposta;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

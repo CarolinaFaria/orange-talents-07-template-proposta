@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.proposta.analise;
+package br.com.zup.edu.desafioproposta.proposta.analisa_proposta;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

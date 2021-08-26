@@ -1,6 +1,6 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
-import br.com.zup.edu.desafioproposta.proposta.analise.enuns.EstadoProposta;
+import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.EstadoProposta;
 
 import java.math.BigDecimal;
 

@@ -22,7 +22,7 @@ public class BiometriaController {
     @Autowired
     BiometriaRepository biometriaRepository;
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/biometrias")
     @Transactional
     public ResponseEntity<?> cadastraBiometria(@PathVariable("id") Long idCartao, @RequestBody @Valid BiometriaRequest request, UriComponentsBuilder uriBuilder ){
         Optional<Cartao> cartaoExiste = cartaoRepository.findById(idCartao);

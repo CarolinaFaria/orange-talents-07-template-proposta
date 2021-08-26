@@ -1,9 +1,9 @@
 package br.com.zup.edu.desafioproposta.cartao.associa_cartao;
 
+import br.com.zup.edu.desafioproposta.cartao.bloquea_cartao.Bloqueio;
 import br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 

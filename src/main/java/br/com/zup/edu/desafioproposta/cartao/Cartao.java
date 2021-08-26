@@ -1,12 +1,11 @@
 package br.com.zup.edu.desafioproposta.cartao;
 
 import br.com.zup.edu.desafioproposta.cartao.associa_cartao.AssociaCartaoResponse;
+import br.com.zup.edu.desafioproposta.cartao.bloquea_cartao.Bloqueio;
 import br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -131,5 +130,18 @@ public class Cartao {
 
     public Vencimento getVencimento() {
         return vencimento;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cartao cartao = (Cartao) o;
+        return id.equals(cartao.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
