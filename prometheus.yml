@@ -31,6 +31,13 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:8888']
 
+  - job_name: 'proposta-webservice'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+
+
   - job_name: 'transacoes'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
