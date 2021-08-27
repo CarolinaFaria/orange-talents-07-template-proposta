@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
 @Entity
 public class Cartao {
 
@@ -45,13 +46,17 @@ public class Cartao {
 
     private String numeroCartao;
 
+    @Enumerated(EnumType.STRING)
+    private StatusCartao statusCartao;
+
     @Deprecated
     public Cartao() {
     }
 
+
     public Cartao(LocalDateTime emitidoEm, String titular, Set<Bloqueio> bloqueios, Set<Aviso> avisos,
                   Set<Carteira> carteiras, Set<Parcela> parcelas, Integer limite, Renegociacao renegociacao,
-                  Vencimento vencimento, String idProposta, String numeroCartao) {
+                  Vencimento vencimento, String idProposta, String numeroCartao,StatusCartao statusCartao) {
         this.emitidoEm = emitidoEm;
         this.titular = titular;
         this.bloqueios = bloqueios;
@@ -63,6 +68,8 @@ public class Cartao {
         this.vencimento = vencimento;
         this.idProposta = idProposta;
         this.numeroCartao = numeroCartao;
+        this.statusCartao = statusCartao;
+
     }
 
     public Cartao(AssociaCartaoResponse cartaoResponse) {
@@ -143,5 +150,15 @@ public class Cartao {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+
+    public boolean isCartaoBloqueado() {
+        return this.statusCartao.equals(StatusCartao.BLOQUEADO);
+    }
+
+    public void setStatusCartao(StatusCartao statusCartao) {
+        this.statusCartao = statusCartao;
     }
 }
