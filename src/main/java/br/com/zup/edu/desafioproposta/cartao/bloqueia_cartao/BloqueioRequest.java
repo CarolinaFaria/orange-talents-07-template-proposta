@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.cartao.bloquea_cartao;
+package br.com.zup.edu.desafioproposta.cartao.bloqueia_cartao;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.aviso;
+package br.com.zup.edu.desafioproposta.cartao.associa_aviso;
 
 import br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao.Aviso;
 import org.springframework.data.jpa.repository.JpaRepository;

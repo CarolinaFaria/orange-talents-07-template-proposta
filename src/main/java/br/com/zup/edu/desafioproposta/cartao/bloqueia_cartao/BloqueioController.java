@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.cartao.bloquea_cartao;
+package br.com.zup.edu.desafioproposta.cartao.bloqueia_cartao;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 import br.com.zup.edu.desafioproposta.cartao.CartaoRepository;
@@ -27,12 +27,14 @@ public class BloqueioController {
     public ResponseEntity<?> bloqueaCartao(@PathVariable("id") Long idCartao, @RequestHeader(value = "User-Agent") String sistemaResponsavel,
                                            @RequestHeader(value = "ip") String ip){
         Optional<Cartao> cartaoExiste = cartaoRepository.findById(idCartao);
+        if(cartaoExiste.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
         Cartao cartao = cartaoExiste.get();
         Optional<Bloqueio> bloqueioExiste = bloqueioRepository.findByCartao(cartao);
 
-        if(!cartaoExiste.isPresent()){
-            return ResponseEntity.notFound().build();
-        }
+
         if(bloqueioExiste.isPresent()) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Cartão já está bloqueado");
         }

@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.cartao.bloquea_cartao;
+package br.com.zup.edu.desafioproposta.cartao.bloqueia_cartao;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 

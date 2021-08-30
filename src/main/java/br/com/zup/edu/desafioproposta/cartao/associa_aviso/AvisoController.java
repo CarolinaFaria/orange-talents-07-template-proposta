@@ -1,11 +1,10 @@
-package br.com.zup.edu.desafioproposta.aviso;
+package br.com.zup.edu.desafioproposta.cartao.associa_aviso;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 import br.com.zup.edu.desafioproposta.cartao.CartaoRepository;
 import br.com.zup.edu.desafioproposta.cartao.CartaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;

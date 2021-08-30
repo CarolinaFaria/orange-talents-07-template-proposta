@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.aviso;
+package br.com.zup.edu.desafioproposta.cartao.associa_aviso;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

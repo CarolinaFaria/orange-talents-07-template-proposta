@@ -1,6 +1,7 @@
-package br.com.zup.edu.desafioproposta.aviso;
+package br.com.zup.edu.desafioproposta.cartao.associa_aviso;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
+import br.com.zup.edu.desafioproposta.cartao.associa_carteira.CarteiraDigital;
 import br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao.Aviso;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -25,6 +26,7 @@ public class AvisoRequest {
         this.destinoViagem = destinoViagem;
         this.dataTerminoViagem = dataTerminoViagem;
     }
+
 
     public Aviso toModel(Cartao cartao,String ip, String userAgent ) {
         return new Aviso(destinoViagem,dataTerminoViagem,ip,userAgent,cartao);

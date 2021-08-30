@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.biometria;
+package br.com.zup.edu.desafioproposta.cartao.cadastro_biometria;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 import br.com.zup.edu.desafioproposta.cartao.CartaoRepository;
@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.Optional;
-import java.util.Properties;
 
 @RestController
 @RequestMapping("/cartoes")
@@ -35,7 +34,7 @@ public class BiometriaController {
 
         biometriaRepository.save(biometria);
 
-        URI uri = uriBuilder.path("cartao/{idCartao}/{id}").buildAndExpand(idCartao,biometria.getId()).toUri();
+        URI uri = uriBuilder.path("cartoes/{idCartao}/biometrias/{id}").buildAndExpand(idCartao,biometria.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }

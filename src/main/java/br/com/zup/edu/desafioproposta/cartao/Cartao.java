@@ -1,7 +1,7 @@
 package br.com.zup.edu.desafioproposta.cartao;
 
 import br.com.zup.edu.desafioproposta.cartao.associa_cartao.AssociaCartaoResponse;
-import br.com.zup.edu.desafioproposta.cartao.bloquea_cartao.Bloqueio;
+import br.com.zup.edu.desafioproposta.cartao.bloqueia_cartao.Bloqueio;
 import br.com.zup.edu.desafioproposta.cartao.infomacoes_cartao.*;
 
 import javax.persistence.*;
@@ -139,6 +139,10 @@ public class Cartao {
         return vencimento;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -151,8 +155,6 @@ public class Cartao {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 
     public boolean isCartaoBloqueado() {
         return this.statusCartao.equals(StatusCartao.BLOQUEADO);
