@@ -5,6 +5,8 @@ import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaR
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaResponse;
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.StatusDevolvido;
 import feign.FeignException;
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +29,20 @@ public class PropostaController {
     @Autowired
     private AnaliseProposta analiseProposta;
 
+    private final Tracer tracer;
+
+    public PropostaController(Tracer tracer) {
+        this.tracer = tracer;
+    }
+
     @PostMapping
     @Transactional
     public ResponseEntity<?> criaProposta(@RequestBody @Valid PropostaRequest request, UriComponentsBuilder uriBuilder){
         Optional<Proposta> possivelProposta = propostaRepository.findByDocumento(request.getDocumento());
+
+        Span activeSpan = tracer.activeSpan();
+        activeSpan.setTag("user.email", "carolina@gmail.com");
+        activeSpan.log("Testando log");
 
         if(possivelProposta.isPresent()) {
             ErroDocumentoPropostaDto erroDocumentoPropostaDto = new ErroDocumentoPropostaDto("documento", "Já existe uma proposta com esse documento cadastrada!");
@@ -50,6 +62,8 @@ public class PropostaController {
     @Transactional
     public ResponseEntity<?> acompanhaProposta(@PathVariable Long id) {
         Optional<Proposta> possivelProposta = propostaRepository.findById(id);
+
+        tracer.activeSpan().setBaggageItem("cartao.id", id.toString());
 
         if (possivelProposta.isPresent()) {
             Proposta proposta = possivelProposta.get();
