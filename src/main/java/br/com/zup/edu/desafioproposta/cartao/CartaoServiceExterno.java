@@ -1,5 +1,7 @@
 package br.com.zup.edu.desafioproposta.cartao;
 
+import br.com.zup.edu.desafioproposta.aviso.AvisoRequest;
+import br.com.zup.edu.desafioproposta.aviso.AvisoApiResponse;
 import br.com.zup.edu.desafioproposta.cartao.associa_cartao.AssociaCartaoResponse;
 import br.com.zup.edu.desafioproposta.cartao.associa_cartao.CriaCartaoRequest;
 import br.com.zup.edu.desafioproposta.cartao.bloquea_cartao.BloqueioResponse;
@@ -20,5 +22,8 @@ public interface CartaoServiceExterno {
 
     @GetMapping("/cartoes")
     AssociaCartaoResponse associaCartao(@RequestParam String idProposta);
+
+    @PostMapping("/cartoes/{id}/avisos")
+    AvisoApiResponse avisoCartao(@PathVariable String id, @RequestBody AvisoRequest avisoRequest);
 
 }

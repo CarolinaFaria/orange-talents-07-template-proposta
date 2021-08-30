@@ -19,7 +19,7 @@ public class AvisoRequest {
     private LocalDate dataTerminoViagem;
 
     @JsonCreator( mode = JsonCreator.Mode.PROPERTIES)
-    public AvisoRequest(String destinoViagem, @JsonFormat(pattern = "dd/MM/yyyy",
+    public AvisoRequest(String destinoViagem, @JsonFormat(pattern = "yyyy-MM-dd",
             shape = JsonFormat.Shape.STRING) LocalDate dataTerminoViagem) {
 
         this.destinoViagem = destinoViagem;
@@ -30,4 +30,11 @@ public class AvisoRequest {
         return new Aviso(destinoViagem,dataTerminoViagem,ip,userAgent,cartao);
     }
 
+    public String getDestinoViagem() {
+        return destinoViagem;
+    }
+
+    public LocalDate getDataTerminoViagem() {
+        return dataTerminoViagem;
+    }
 }
