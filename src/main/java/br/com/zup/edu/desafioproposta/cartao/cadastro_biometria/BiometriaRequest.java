@@ -2,7 +2,7 @@ package br.com.zup.edu.desafioproposta.cartao.cadastro_biometria;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
 
-import br.com.zup.edu.desafioproposta.validacao.BiometriaValida;
+import br.com.zup.edu.desafioproposta.config.utils.validacao.BiometriaValida;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 

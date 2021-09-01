@@ -14,4 +14,6 @@ public interface PropostaRepository extends JpaRepository<Proposta,Long> {
 
     List<Proposta> findAllByEstadoPropostaAndCartao(EstadoProposta elegivel,Long cartaoId);
 
+
+    Optional<Proposta> findByDocumentoHash(String requestHash);
 }

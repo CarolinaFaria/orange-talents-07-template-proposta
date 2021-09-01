@@ -1,7 +1,7 @@
 package br.com.zup.edu.desafioproposta.proposta.analisa_proposta;
 
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.StatusDevolvido;
-import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
+import br.com.zup.edu.desafioproposta.config.utils.validacao.CPForCNPJ;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

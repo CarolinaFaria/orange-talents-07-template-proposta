@@ -2,20 +2,20 @@ package br.com.zup.edu.desafioproposta.proposta;
 
 public class ErroDocumentoPropostaDto {
 
-    private final String documento;
-    private final String s;
+    private final String campo;
+    private final String erro;
 
 
-    public ErroDocumentoPropostaDto(String documento, String s) {
-        this.documento = documento;
-        this.s = s;
+    public ErroDocumentoPropostaDto(String campo, String erro) {
+        this.campo = campo;
+        this.erro = erro;
     }
 
-    public String getS() {
-        return s;
+    public String getErro() {
+        return erro;
     }
 
-    public String getDocumento() {
-        return documento;
+    public String getCampo() {
+        return campo;
     }
 }

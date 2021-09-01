@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.validacao;
+package br.com.zup.edu.desafioproposta.config.utils.validacao;
 
 import org.hibernate.validator.constraints.CompositionType;
 import org.hibernate.validator.constraints.ConstraintComposition;

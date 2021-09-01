@@ -1,7 +1,8 @@
 package br.com.zup.edu.desafioproposta.proposta.analisa_proposta;
 
+import br.com.zup.edu.desafioproposta.config.utils.cripografia.JasyptConfig;
 import br.com.zup.edu.desafioproposta.proposta.Proposta;
-import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
+import br.com.zup.edu.desafioproposta.config.utils.validacao.CPForCNPJ;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,6 +29,7 @@ public class AnalisePropostaRequest {
         this.idProposta = proposta.getId().toString();
 
     }
+
 
     public String getNome() {
         return nome;

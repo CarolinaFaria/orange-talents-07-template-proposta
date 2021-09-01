@@ -1,8 +1,9 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
 import br.com.zup.edu.desafioproposta.cartao.Cartao;
+import br.com.zup.edu.desafioproposta.config.utils.cripografia.JasyptConfig;
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.enuns.EstadoProposta;
-import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
+import br.com.zup.edu.desafioproposta.config.utils.validacao.CPForCNPJ;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -18,8 +19,8 @@ public class Proposta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @CPForCNPJ
     private String documento;
+    private String documentoHash;
     @Email
     @NotBlank
     private String email;
@@ -41,7 +42,8 @@ public class Proposta {
     }
 
     public Proposta(String documento, String email, String nome, String endereco, BigDecimal salario) {
-        this.documento = documento;
+        this.documento = cripografa(documento);
+        this.documentoHash = hash(documento);
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
@@ -49,7 +51,7 @@ public class Proposta {
     }
 
     public Proposta(Proposta proposta) {
-        this.documento = proposta.getDocumento();
+        this.documento = descripografa(proposta.getDocumento());
         this.email = proposta.getEmail();
         this.nome = proposta.getNome();
         this.endereco = proposta.getEndereco();
@@ -57,12 +59,26 @@ public class Proposta {
     }
 
 
+    private String cripografa(String documento) {
+        return new JasyptConfig().criptografaDocumento(documento);
+    }
+
+    private String hash(String documento) {
+        return new JasyptConfig().hash(documento);
+    }
+
+    private String descripografa(String documento) {
+        return new JasyptConfig().descriptografaDocumento(documento);
+    }
+
+
+
     public Long getId() {
         return id;
     }
 
     public String getDocumento() {
-        return documento;
+        return descripografa(documento);
     }
 
     public String getNome() {
@@ -91,5 +107,9 @@ public class Proposta {
 
     public void getCartao(Cartao cartao) {
         this.cartao = cartao;
+    }
+
+    public String getDocumentoHash() {
+        return documentoHash;
     }
 }

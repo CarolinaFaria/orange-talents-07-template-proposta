@@ -1,6 +1,6 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
-import br.com.zup.edu.desafioproposta.validacao.CPForCNPJ;
+import br.com.zup.edu.desafioproposta.config.utils.validacao.CPForCNPJ;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.Email;
@@ -16,6 +16,7 @@ public class PropostaRequest {
     @NotBlank
     @CPForCNPJ
     private String documento;
+
     @Email
     @NotBlank
     private String email;
@@ -37,10 +38,10 @@ public class PropostaRequest {
     }
 
     public Proposta toModel() {
-       return new Proposta(documento,email,nome,endereco,salario);
+       return new Proposta(documento, email,nome,endereco,salario);
     }
 
-    public Object getDocumento() {
+    public String getDocumento() {
         return documento;
     }
 

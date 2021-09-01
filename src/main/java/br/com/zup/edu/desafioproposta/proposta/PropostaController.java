@@ -1,5 +1,6 @@
 package br.com.zup.edu.desafioproposta.proposta;
 
+import br.com.zup.edu.desafioproposta.config.utils.cripografia.JasyptConfig;
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnaliseProposta;
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaRequest;
 import br.com.zup.edu.desafioproposta.proposta.analisa_proposta.AnalisePropostaResponse;
@@ -38,14 +39,16 @@ public class PropostaController {
     @PostMapping
     @Transactional
     public ResponseEntity<?> criaProposta(@RequestBody @Valid PropostaRequest request, UriComponentsBuilder uriBuilder){
-        Optional<Proposta> possivelProposta = propostaRepository.findByDocumento(request.getDocumento());
+        String requestHash = hash(request.getDocumento());
+        Optional<Proposta> possivelProposta = propostaRepository.findByDocumentoHash(requestHash);
 
         Span activeSpan = tracer.activeSpan();
         activeSpan.setTag("user.email", "carolina@gmail.com");
         activeSpan.log("Testando log");
 
         if(possivelProposta.isPresent()) {
-            ErroDocumentoPropostaDto erroDocumentoPropostaDto = new ErroDocumentoPropostaDto("documento", "Já existe uma proposta com esse documento cadastrada!");
+            ErroDocumentoPropostaDto erroDocumentoPropostaDto = new ErroDocumentoPropostaDto("documento",
+                    "Já existe uma proposta com esse documento cadastrada!");
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(erroDocumentoPropostaDto);
         }
 
@@ -84,4 +87,7 @@ public class PropostaController {
         proposta.setEstadoProposta(statusDevolvido.defineEstado());
     }
 
+    private String hash(String documento) {
+        return new JasyptConfig().hash(documento);
+    }
 }

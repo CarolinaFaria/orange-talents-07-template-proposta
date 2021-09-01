@@ -1,4 +1,4 @@
-package br.com.zup.edu.desafioproposta.validacao;
+package br.com.zup.edu.desafioproposta.config.utils.validacao;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
